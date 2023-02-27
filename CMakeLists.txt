@@ -76,6 +76,7 @@ target_link_libraries(orora_odom
 	${OpenCV_LIBRARIES}
 	${PCL_LIBRARIES}
 	${Boost_INCLUDE_DIRS}
+	${OpenMP_CXX_FLAGS}
     Eigen3::Eigen
 	stdc++fs
 	pmc::pmc
