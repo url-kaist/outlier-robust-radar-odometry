@@ -50,9 +50,7 @@ int   end_idx          = -1; // radar_files.size() - 1;
 int main(int argc, char *argv[]) {
     ros::init(argc, argv, "orora", ros::init_options::AnonymousName);
     ros::NodeHandle nh;
-
-    omp_set_num_threads(8);
-
+    
     curr_odom = Eigen::Matrix4d::Identity(4, 4); // initial pose is I
     curr_gt   = Eigen::Matrix4d::Identity(4, 4); // initial pose is I
 

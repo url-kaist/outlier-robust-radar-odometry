@@ -83,7 +83,7 @@ struct less_than_img {
 };
 
 void get_file_names(std::string path, std::vector<std::string> &files, std::string extension) {
-    std::cout << "get_filen_names inside: " << path << "\n";
+    std::cout << "get_file_names inside: " << path << "\n";
     DIR           *dirp = opendir(path.c_str());
     struct dirent *dp;
     while ((dp = readdir(dirp)) != NULL) {

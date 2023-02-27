@@ -30,23 +30,23 @@
     * Boost 1.5.8
     * OpenCV 3.3 (or 3.4)
 
-* In Ubuntu 20.04, we use (**NOT TESTED YET**)
-    * Eigen TBU
-    * Boost TBU
-    * OpenCV TBU
+* In Ubuntu 20.04, we use 
+    * Eigen 3.3
+    * Boost 1.71
+    * OpenCV 4.2
 
 ## How to Build
 
 Just follow the below command:
 
-```asm
+```
 $ mkdir -p \~/catkin_ws/src/ && cd \~/catkin_ws/src
 $ git clone https://github.com/url-kaist/outlier-robust-radar-odometry.git
 $ cd ..
 $ catkin build orora
 ```
 
-Based on target-oriented CMake, PMC is automatically installed when you run `catkin build orora`
+TMI: Following the philosophy of target-oriented CMake, PMC is automatically installed when you run `catkin build orora`
 
 ## How to Run and Evaluate Radar Odometry in MulRan dataset
 
