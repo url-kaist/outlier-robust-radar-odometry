@@ -30,14 +30,14 @@
     * Boost 1.5.8
     * OpenCV 3.3 (or 3.4)
 
-* In Ubuntu 20.04, we use
+* In Ubuntu 20.04, we use (**NOT TESTED YET**)
     * Eigen TBU
     * Boost TBU
     * OpenCV TBU
 
 ## How to Build
 
-Based on target-oriented CMake, PMC is automatically installed when you run `catkin build orora`
+Just follow the below command:
 
 ```asm
 $ mkdir -p \~/catkin_ws/src/ && cd \~/catkin_ws/src
@@ -46,12 +46,14 @@ $ cd ..
 $ catkin build orora
 ```
 
+Based on target-oriented CMake, PMC is automatically installed when you run `catkin build orora`
+
 ## How to Run and Evaluate Radar Odometry in MulRan dataset
 
-1. Set files of the [MulRan](https://sites.google.com/view/mulran-pr/dataset) dataset as follows:
+1. Set file tree of the [MulRan](https://sites.google.com/view/mulran-pr/dataset) dataset as follows:
  
 
-```asm
+```
 ${MULRAN_DIR}
 _____/KAIST03 
      |___global_pose.csv
@@ -78,13 +80,13 @@ $ rosrun orora mulran_generate_gt /media/hyungtaelim/UX960NVMe/mulran KAIST03
 
 3. Then, set right `seq_dir` in `launch/run_orora.launch` & run the below command
 
-```asm
+```
 $ roslaunch orora run_orora.launch
 ```
 
 4. Run `script/evaluate_odometry.py` as follows:
 
-```asm
+```
 // E.g.
 $ python evaluate_odometry.py -f /media/hyungtaelim/UX960NVMe/mulran/KAIST03/outputs/mulran_ORORA_cen2018_0.6_0.75_0.1_0.15708eval_odom.txt
 ```
@@ -92,7 +94,9 @@ $ python evaluate_odometry.py -f /media/hyungtaelim/UX960NVMe/mulran/KAIST03/out
 
 ## Acknowledgement
 
-Many thanks to [Keenan Burnett](https://github.com/keenan-burnett/yeti_radar_odometry) to provide some outstanding radar odometry codes!
+Many thanks to [Keenan Burnett](https://github.com/keenan-burnett) to provide outstanding radar odometry codes! 
+
+Please refer to [Yeti-Radar-Odometry](https://github.com/keenan-burnett/yeti_radar_odometry) for more information
 
 ---
 
