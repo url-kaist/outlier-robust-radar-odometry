@@ -1,0 +1,47 @@
+ORORA:
+    use_doppler_compensation: true
+
+    use_deskewing: false # It's weird, but deskewing rather decreases pose estimation in MulRan dataset
+
+    use_voxelization: true
+
+    voxel_size: 0.6 # [m]
+
+    noise_bound: 0.75 # dependent on `voxel_size`. `noise_bound` is set to range between 1.0 * `voxel_size` to 2.0 * `voxel_size`
+
+    noise_bound_radial: 0.1 # [m]
+
+    noise_bound_tangential: 9.0 # [Deg]
+
+    deskewing_target: "rot"
+
+    #############################
+    # Not included in paper
+    # Originally, as the number of feature pairs increases, computational cost of PMC also dramatically increase.
+    # We observed that stopped motion results in too many feature matching correspondences.
+    # Therefore, we empirically set `num_feat_thr_for_stop_motion` to check whether a robot is stopped or not
+    #############################
+    stop_motion:
+        check_stop_motion: true
+        num_feat_thr_for_stop_motion: 700 # Note that it depends on the `voxel_size`
+
+    #############################
+    # Less important parameters
+    #############################
+    # `noise_bound_coeff` plays a role as an uncertainty multiplier and is used when estimating COTE.
+    # I.e. final noise bound is set to `noise_bound` * `noise_bound_coeff`
+    noise_bound_coeff: 1.0
+    rotation:
+        # Num. max iter for the rotation estimation.
+        # Usually, rotation estimation converges within < 20 iterations
+        num_max_iter: 100
+        # Control the magnitue of the increase in non-linearity. In case of TLS, usually `gnc_factor` is set to 1.4
+        # The larger the value, the steeper the increase in nonlinearity.
+        gnc_factor: 1.4
+        # The cost threshold is compared with the difference between costs of consecutive iterations.
+        # Once the diff. of cost < `rot_cost_diff_thr`, then the optimization is finished.
+        rot_cost_diff_thr: 0.000001
+
+    
+
+

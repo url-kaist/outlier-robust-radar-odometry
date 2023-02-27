@@ -1,0 +1,20 @@
+<launch>
+    <!-- use your path -->
+    <rosparam command="load" file="$(find orora)/config/orora_params.yaml" />
+    <param name="seq_dir" type="string" value="/media/shapelim/UX960NVMe/radar/KAIST03" />
+    <param name="keypoint_extraction" type="string" value="cen2018" />
+    <param name="algorithm" type="string" value="ORORA" />
+    <param name="dataset" type="string" value="mulran" />
+    <param name="viz_extraction" type="bool" value="false" />
+    <param name="viz_matching" type="bool" value="false" />
+    <param name="frame_rate" type="int" value="4" />
+    <param name="stop_each_frame" type="bool" value="false" />
+
+    <node pkg="orora" type="orora_odom" name="orora_odom" output="screen" />
+
+<!--     <arg name="rviz" default="true" /> -->
+<!--     <group if="$(arg rviz)"> -->
+<!--         <node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find orora)/rviz/orora_viz.rviz" /> -->
+<!--     </group> -->
+
+</launch>
