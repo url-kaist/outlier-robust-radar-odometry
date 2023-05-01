@@ -8,14 +8,14 @@
 
 **NOTE** Code & youtube video will be updated until the end of Feb!
 
-* Please refer our **paper** for detailed explanantions and experimental results!
+* Please refer our [**paper**][arXivlink] for detailed explanantions and experimental results!
 
 * Validated on [MulRan][SemanticKITTIlink] dataset. 
 
 * :bulb: Contents: **YouTube**
 
 [YouTubeLInk]: https://www.youtube.com/watch?v=fogCM159GRk
-[arXivlink]: https://arxiv.org/abs/2207.11919
+[arXivlink]: https://arxiv.org/abs/2303.01876
 [SemanticKITTIlink]: https://sites.google.com/view/mulran-pr/dataset
 
 ---
