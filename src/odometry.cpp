@@ -50,7 +50,9 @@ int   end_idx          = -1; // radar_files.size() - 1;
 int main(int argc, char *argv[]) {
     ros::init(argc, argv, "orora", ros::init_options::AnonymousName);
     ros::NodeHandle nh;
-    
+
+    omp_set_num_threads(16);
+
     curr_odom = Eigen::Matrix4d::Identity(4, 4); // initial pose is I
     curr_gt   = Eigen::Matrix4d::Identity(4, 4); // initial pose is I
 
@@ -67,7 +69,7 @@ int main(int argc, char *argv[]) {
     image_transport::ImageTransport it(nh);
     image_transport::Publisher      PubImg = it.advertise("orora/matched_img", 100);
 
-    bool        viz_extraction, viz_matching, stop_each_frame;
+    bool        do_slam, viz_extraction, viz_matching, stop_each_frame;
     std::string seq_dir, algorithm, dataset;
     std::string keypoint_extraction;        // "cen2018", "cen2019", "orb"
     string      odom_frame  = "odom";
@@ -80,6 +82,7 @@ int main(int argc, char *argv[]) {
     nh.param<std::string>("odom_frame", odom_frame, "odom");
     nh.param<std::string>("child_frame", child_frame, "radar_base");
     nh.param<int>("end_idx", end_idx, -1);
+    nh.param<bool>("do_slam", do_slam, false);
     nh.param<bool>("viz_extraction", viz_extraction, false);
     nh.param<bool>("viz_matching", viz_matching, false);
     nh.param<bool>("stop_each_frame", stop_each_frame, false);
@@ -381,8 +384,11 @@ int main(int argc, char *argv[]) {
         }
 
         // make sure under 10hz, to privde enough time for following PGO module
-//        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        if (do_slam) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        } else {
+            std::this_thread::sleep_for(std::chrono::milliseconds(20));
+        }
     }
 
     ros::spinOnce();

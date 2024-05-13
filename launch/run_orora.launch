@@ -3,7 +3,11 @@
     <rosparam command="load" file="$(find orora)/config/orora_params.yaml" />
 
     <arg name="seq_dir" default="" />
+    <arg name="do_slam" default="false" />
+
     <param name="seq_dir" type="string" value="$(arg seq_dir)" />
+    <param name="do_slam" type="bool" value="$(arg do_slam)" />
+
     <param name="keypoint_extraction" type="string" value="cen2018" />
     <param name="algorithm" type="string" value="ORORA" />
     <param name="dataset" type="string" value="mulran" />
