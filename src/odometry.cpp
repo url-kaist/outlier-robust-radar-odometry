@@ -299,8 +299,7 @@ int main(int argc, char *argv[]) {
         cout << "Complete to publish pose! " << endl;
 
         // for scan context (in this naive case, we can say we will use binary scan context).
-        // Not updated yet
-        const float constant_z_nonzero = 2.0;
+        const float constant_z_nonzero = 1.0;
 
         pcl::PointCloud<PointType>::Ptr laserCloudLocal(new pcl::PointCloud<PointType>());
         pcl::PointCloud<PointType>::Ptr laserCloudGlobal(new pcl::PointCloud<PointType>());
