@@ -1,22 +1,18 @@
 # Outlier-RObust RAdar odometry (ORORA)
 
+
+<p align="center"><img src=materials/orora_title_video.gif alt="animated" /></p>
+
 ## :bookmark_tabs: About ORORA (IRCA'23)
 
 * A robust radar odometry method in urban environments
 
-<p align="center"><img src=materials/orora_title_video.gif alt="animated" /></p>
+* Please refer our [**paper**][arXivlink] and [**YouTube**](https://www.youtube.com/watch?v=7ZMPtornIHA) for detailed explanations and experimental results!
 
-**NOTE** Code & youtube video will be updated until the end of Feb!
+* Validated on [MulRan][Mulranlink] dataset. 
 
-* Please refer our [**paper**][arXivlink] for detailed explanantions and experimental results!
-
-* Validated on [MulRan][SemanticKITTIlink] dataset. 
-
-* :bulb: Contents: **YouTube**
-
-[YouTubeLInk]: https://www.youtube.com/watch?v=fogCM159GRk
 [arXivlink]: https://arxiv.org/abs/2303.01876
-[SemanticKITTIlink]: https://sites.google.com/view/mulran-pr/dataset
+[Mulranlink]: https://sites.google.com/view/mulran-pr/dataset
 
 ---
 ## Requirement Version & Test Environment
@@ -81,8 +77,15 @@ $ rosrun orora mulran_generate_gt /media/hyungtaelim/UX960NVMe/mulran KAIST03
 3. Then, set right `seq_dir` in `launch/run_orora.launch` & run the below command
 
 ```
-$ roslaunch orora run_orora.launch
+roslaunch orora run_orora.launch seq_dir:=${DATA_DIR}
 ```
+
+For instance, it can be run as follows:
+```
+roslaunch orora run_orora.launch seq_dir:="/media/shapelim/UX980/UX960NVMe/mulran-radar/KAIST03"
+```
+
+Note, `polar_oxford_form` folder should be placed in the `${DATA_DIR}` directory.
 
 4. Run `script/evaluate_odometry.py` as follows:
 
