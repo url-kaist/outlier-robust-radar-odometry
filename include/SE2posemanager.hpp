@@ -22,14 +22,24 @@ void loadGTPoses(const std::string &gt_path, std::unordered_map<int64, std::vect
     std::ifstream ifs(gt_path);
     std::string   line;
     // If the first line consists of text, below line should be uncommented
-//    std::getline(ifs, line);
+    // std::getline(ifs, line);
+
     while (std::getline(ifs, line)) {
+        if (line.empty()) continue;
+        float x,y,yaw;
         std::vector<std::string> words;
         boost::split(words, line, boost::is_any_of(","));
+
+        if (words.size() < 4) {
+            std::cerr << "Skipping invalid line: " << line << std::endl;
+            continue;
+        }
         int64              timestamp    = stoll(words[0]);
-        std::vector<float> parsed_xyyaw = {stof(words[1]), stof(words[3]), stof(words[3])};
+
+        std::vector<float> parsed_xyyaw = {stod(words[1]), stod(words[2]), stod(words[3])};
         gt_rel[timestamp] = parsed_xyyaw;
     }
+
     std::cout << "Total " << gt_rel.size() << " GT rel. poses are loaded" << std::endl;
     if (gt_rel.size() == 0) {
         throw invalid_argument("Some parameters seem to be wrong! Load GT failed!");
