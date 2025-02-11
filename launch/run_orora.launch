@@ -2,8 +2,8 @@
     <!-- use your path -->
     <rosparam command="load" file="$(find orora)/config/orora_params.yaml" />
 
-    <arg name="seq_dir" default="" />
-    <arg name="do_slam" default="false" />
+    <arg name="seq_dir" default="/root/dataset/DCC01" />
+    <arg name="do_slam" default="true" />
 
     <param name="seq_dir" type="string" value="$(arg seq_dir)" />
     <param name="do_slam" type="bool" value="$(arg do_slam)" />

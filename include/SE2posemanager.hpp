@@ -26,13 +26,12 @@ void loadGTPoses(const std::string &gt_path, std::unordered_map<int64, std::vect
 
     while (std::getline(ifs, line)) {
         if (line.empty()) continue;
-        float x,y,yaw;
         std::vector<std::string> words;
         boost::split(words, line, boost::is_any_of(","));
 
         if (words.size() < 4) {
             std::cerr << "Skipping invalid line: " << line << std::endl;
-            continue;
+            throw std::logic_error("Invalid line detected from GT dataset!");
         }
         int64              timestamp    = stoll(words[0]);
 
